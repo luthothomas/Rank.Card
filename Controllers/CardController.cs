@@ -11,13 +11,12 @@ namespace Rank.Card.Controllers
 {
     public class CardController : Controller
     {
-        string expre = @"^4[0-9]{12}(?:[0-9]{3})|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12}$";
         string expeVisa = @"^4[0-9]{12}(?:[0-9]{3})?$";
         string experAmex = @"^3[47][0-9]{13}$";
         string experMasterCard = @"^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$";
-        string experDiscover = @"^6(?:011 | 5[0 - 9]{ 2})[0 - 9]{ 12}$";
+        string experDiscover = @"^6(?:011|5[0-9]{2})[0-9]{12}$";
 
-// GET: Card
+
         public  ActionResult Index()
         {
             IEnumerable<Models.Card> CardList = new List<Models.Card>();
@@ -49,12 +48,7 @@ namespace Rank.Card.Controllers
         {
             return View();
         }
-
-        //public List<CardTypes.CreditCardType> GetCardTypeList()
-        //{
-        //    List<CardTypes.CreditCardType> list = new List<CardTypes.CreditCardType>();
-        //    return list;
-        //}
+      
         public static List<Rank.Card.Models.Card> GetCardList(int? Id,string CardNumber)
         {
 
