@@ -1,0 +1,64 @@
+﻿@model Rank.Card.Models.Card
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()    
+<div class="form-horizontal">
+    <h4>Edit Card</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CardHolderName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CardHolderName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CardHolderName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CardNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>   
+    <div class="form-group">
+        @Html.LabelFor(model => model.CardType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.GetCardType, new SelectList(ViewBag.enumCardList, "Value", "Text", "Select CardType"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.GetCardType, "", new { @class = "text-danger" })
+        </div>
+    </div>    
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateExpiryYear, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateExpiryYear, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateExpiryYear, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateExpiryMonth, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateExpiryMonth, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateExpiryMonth, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
